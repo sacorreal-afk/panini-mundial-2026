@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Soporte para safe-area en iPhone (notch / dynamic island) */
+:root {
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+  --safe-left: env(safe-area-inset-left);
+  --safe-right: env(safe-area-inset-right);
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: #0c0a09;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  /* Padding para safe area en iPhone */
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+  padding-left: var(--safe-left);
+  padding-right: var(--safe-right);
+}
+
+.font-display {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.gradient-pitch {
+  background: linear-gradient(135deg, #0a4d1e 0%, #0f6b2a 50%, #0a4d1e 100%);
+}
+
+.gradient-gold {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+}
+
+.gradient-card {
+  background: linear-gradient(180deg, #1c1917 0%, #0c0a09 100%);
+}
+
+.border-pitch {
+  border-color: #166534;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.foil-shine {
+  background: linear-gradient(135deg, #fbbf24 0%, #fde68a 25%, #f59e0b 50%, #fde68a 75%, #fbbf24 100%);
+  background-size: 200% 200%;
+  animation: shimmer 3s infinite;
+}
+
+/* Scrollbar oculto en moviles */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Prevenir zoom al hacer focus en inputs en iOS */
+input, textarea, select {
+  font-size: 16px !important;
+}
+
+/* Inputs con clase font-mono mantienen su estilo */
+input.font-mono, textarea.font-mono {
+  font-family: 'JetBrains Mono', monospace !important;
+}
